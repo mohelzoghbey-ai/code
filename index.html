@@ -1,119 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TST - Technology Society Team | Shaping the Future of Tech</title>
-    <meta name="description" content="TST is an independent youth tech community building a space for creative and tech-passionate individuals in the Delta region.">
+    <meta name="description"
+        content="TST is an independent youth tech community building a space for creative and tech-passionate individuals in the Delta region.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary-dark: #171616;
+            --primary-light: #F3F3F3DD;
+            --secondary-gray: #C5C5C5;
+            --accent-red: #D11215;
+            --accent-purple: #6F4E9F;
+            --white: #FFFFFF;
+            --black: #000000;
+            --linkedin: #0A66C2;
+            --facebook: #1877F2;
+            --gray-dark: #4A4A4A;
+            --cyan: #00F2EA;
+            --green: #14AE5C;
+            --pink: #FF004F;
+            --blue-dark: #09508F;
+            --purple-light: #CB6CE6;
+        }
+
+        body {
+            background: #171616;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #CB6CE6 0%, #00F2EA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg-purple {
+            background: linear-gradient(180deg, rgba(18, 0, 32, 0.1) 0%, rgba(163, 102, 210, 0.1) 100%);
+        }
+
+        .gradient-instagram {
+            background: radial-gradient(92.18% 99.11% at 26.56% 107.7%, #FFDD55 0%, #FFDD55 10%, #FF543E 50%, #C837AB 100%);
+        }
+
+        .gradient-linkedin {
+            background: radial-gradient(179.06% 43.44% at -16.75% 7.2%, #3771C8 0%, #3771C8 12.8%, rgba(102, 0, 255, 0) 100%);
+        }
+
+        .gradient-telegram {
+            background: linear-gradient(180deg, #2AABEE 0%, #229ED9 100%);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(203, 108, 230, 0.3);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(203, 108, 230, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(203, 108, 230, 0.8), 0 0 60px rgba(0, 242, 234, 0.5);
+            }
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(23, 22, 22, 0.8);
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #CB6CE6, #00F2EA, transparent);
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(203, 108, 230, 0.2);
+        }
+
+        .department-icon {
+            transition: all 0.3s ease;
+        }
+
+        .department-card:hover .department-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 20% 50%, rgba(203, 108, 230, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 242, 234, 0.15) 0%, transparent 50%);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #CB6CE6 0%, #6F4E9F 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(203, 108, 230, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid #00F2EA;
+            color: #00F2EA;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00F2EA;
+            color: #171616;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-<body class="bg-gray-950 text-white font-['Inter']">
+
+<body class="text-white">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-gray-950/80 backdrop-blur-lg border-b border-purple-500/20">
+    <nav class="fixed top-0 w-full z-50 nav-blur transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center font-bold text-xl">
-                        T
-                    </div>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">TST</span>
+                    <img src="logo.png" alt="TST Logo" class="h-12 w-12 float-animation">
+                    <span class="text-2xl font-bold gradient-text">TST</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link hover:text-purple-400 transition-colors">Home</a>
-                    <a href="#about" class="nav-link hover:text-purple-400 transition-colors">About</a>
-                    <a href="#departments" class="nav-link hover:text-purple-400 transition-colors">Departments</a>
-                    <a href="#team" class="nav-link hover:text-purple-400 transition-colors">Team</a>
-                    <a href="#events" class="nav-link hover:text-purple-400 transition-colors">Events</a>
-                    <a href="#contact" class="nav-link hover:text-purple-400 transition-colors">Contact</a>
+                    <a href="#home" class="hover:text-purple-light transition-colors">Home</a>
+                    <a href="#about" class="hover:text-purple-light transition-colors">About</a>
+                    <a href="#departments" class="hover:text-purple-light transition-colors">Departments</a>
+                    <a href="#team" class="hover:text-purple-light transition-colors">Team</a>
+                    <a href="#events" class="hover:text-purple-light transition-colors">Events</a>
+                    <a href="#contact" class="hover:text-purple-light transition-colors">Contact</a>
                 </div>
-                <button id="joinBtn" class="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all transform hover:scale-105">
+                <button class="btn-primary px-6 py-2 rounded-full font-semibold" onclick="scrollToSection('join')">
                     Join Us
                 </button>
+                <button class="md:hidden text-2xl" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4">
+            <a href="#home" class="block py-2 hover:text-purple-light transition-colors">Home</a>
+            <a href="#about" class="block py-2 hover:text-purple-light transition-colors">About</a>
+            <a href="#departments" class="block py-2 hover:text-purple-light transition-colors">Departments</a>
+            <a href="#team" class="block py-2 hover:text-purple-light transition-colors">Team</a>
+            <a href="#events" class="block py-2 hover:text-purple-light transition-colors">Events</a>
+            <a href="#contact" class="block py-2 hover:text-purple-light transition-colors">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <!-- Animated Background -->
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-float" style="top: 10%; left: 10%;"></div>
-            <div class="absolute w-96 h-96 bg-pink-500/30 rounded-full blur-3xl animate-float-delayed" style="bottom: 10%; right: 10%;"></div>
-            <div class="absolute w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float-slow" style="top: 50%; left: 50%;"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div class="hero-content">
-                <h1 class="text-6xl md:text-8xl font-black mb-6 leading-tight">
-                    <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
-                        Technology Society Team
-                    </span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                    A group of passionate young minds shaping the future of technology
-                </p>
-                <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-                    The first startup company organizing tech events in the Delta region, building a space for creative and tech-passionate individuals.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all transform hover:scale-105">
-                        Join Our Community
-                    </button>
-                    <button class="border-2 border-purple-500 px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-500/10 transition-all transform hover:scale-105">
-                        Explore Events
-                    </button>
-                </div>
+    <section id="home" class="min-h-screen flex items-center justify-center hero-gradient pt-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <img src="logo.png" alt="TST Logo" class="h-32 w-32 mx-auto mb-8 pulse-glow rounded-2xl">
             </div>
-            
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
+            <h1 class="text-6xl md:text-8xl font-black mb-6 fade-in" style="animation-delay: 0.2s;">
+                <span class="gradient-text">TST</span>
+            </h1>
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 fade-in" style="animation-delay: 0.4s;">
+                Technology Society Team
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto fade-in" style="animation-delay: 0.6s;">
+                A group of passionate young minds shaping the future of technology
+            </p>
+            <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto fade-in" style="animation-delay: 0.8s;">
+                Building a space for creative and tech-passionate individuals. The first startup company organizing
+                events in the Delta region.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="animation-delay: 1s;">
+                <button class="btn-primary px-8 py-4 rounded-full font-semibold text-lg"
+                    onclick="scrollToSection('join')">
+                    Join Our Community
+                </button>
+                <button class="btn-secondary px-8 py-4 rounded-full font-semibold text-lg"
+                    onclick="scrollToSection('about')">
+                    Learn More
+                </button>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">About TST</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-divider mb-16"></div>
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-5xl font-bold mb-4">About <span class="gradient-text">TST</span></h2>
+                <p class="text-xl text-gray-400">Who we are and what we stand for</p>
             </div>
-            
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in-left">
-                    <h3 class="text-3xl font-bold mb-6">Who We Are</h3>
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        TST (Technology Society Team) is an independent youth tech community dedicated to fostering innovation and creativity among young tech enthusiasts in the Delta region.
+                <div class="scroll-reveal">
+                    <h3 class="text-3xl font-bold mb-6 gradient-text">Our Mission</h3>
+                    <p class="text-lg text-gray-300 mb-6">
+                        TST (Technology Society Team) is an independent youth tech community dedicated to fostering
+                        innovation, creativity, and collaboration among tech enthusiasts in the Delta region.
                     </p>
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        As the first startup company responsible for organizing tech events in our region, we're committed to creating opportunities for learning, networking, and growth in the technology sector.
+                    <p class="text-lg text-gray-300 mb-6">
+                        We are pioneering the startup ecosystem in our region by organizing cutting-edge tech events,
+                        workshops, and hackathons that bring together passionate individuals to learn, build, and grow
+                        together.
                     </p>
-                    <p class="text-gray-300 leading-relaxed">
-                        We believe in the power of collaboration and community-driven innovation to shape the future of technology.
-                    </p>
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="team-card p-6 rounded-xl">
+                            <div class="text-4xl font-bold gradient-text mb-2">500+</div>
+                            <div class="text-gray-400">Community Members</div>
+                        </div>
+                        <div class="team-card p-6 rounded-xl">
+                            <div class="text-4xl font-bold gradient-text mb-2">50+</div>
+                            <div class="text-gray-400">Events Organized</div>
+                        </div>
+                        <div class="team-card p-6 rounded-xl">
+                            <div class="text-4xl font-bold gradient-text mb-2">10+</div>
+                            <div class="text-gray-400">Departments</div>
+                        </div>
+                        <div class="team-card p-6 rounded-xl">
+                            <div class="text-4xl font-bold gradient-text mb-2">100%</div>
+                            <div class="text-gray-400">Youth Driven</div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="grid grid-cols-2 gap-6 fade-in-right">
-                    <div class="stat-card bg-gradient-to-br from-purple-900/50 to-purple-800/30 p-6 rounded-2xl border border-purple-500/30 backdrop-blur-sm">
-                        <div class="text-4xl font-black text-purple-400 mb-2">500+</div>
-                        <div class="text-gray-300">Community Members</div>
-                    </div>
-                    <div class="stat-card bg-gradient-to-br from-pink-900/50 to-pink-800/30 p-6 rounded-2xl border border-pink-500/30 backdrop-blur-sm">
-                        <div class="text-4xl font-black text-pink-400 mb-2">50+</div>
-                        <div class="text-gray-300">Events Organized</div>
-                    </div>
-                    <div class="stat-card bg-gradient-to-br from-blue-900/50 to-blue-800/30 p-6 rounded-2xl border border-blue-500/30 backdrop-blur-sm">
-                        <div class="text-4xl font-black text-blue-400 mb-2">15+</div>
-                        <div class="text-gray-300">Tech Workshops</div>
-                    </div>
-                    <div class="stat-card bg-gradient-to-br from-indigo-900/50 to-indigo-800/30 p-6 rounded-2xl border border-indigo-500/30 backdrop-blur-sm">
-                        <div class="text-4xl font-black text-indigo-400 mb-2">8</div>
-                        <div class="text-gray-300">Departments</div>
+                <div class="scroll-reveal">
+                    <div class="team-card p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Our Values</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🚀</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1">Innovation First</h4>
+                                    <p class="text-gray-400">Pushing boundaries and exploring new technologies</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🤝</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1">Collaboration</h4>
+                                    <p class="text-gray-400">Building together as a united community</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">💡</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1">Continuous Learning</h4>
+                                    <p class="text-gray-400">Growing our skills and knowledge every day</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="text-3xl">🌟</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1">Excellence</h4>
+                                    <p class="text-gray-400">Striving for the highest quality in everything we do</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,241 +353,244 @@
     </section>
 
     <!-- Departments Section -->
-    <section id="departments" class="py-24 bg-gradient-to-b from-gray-950 to-gray-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Our Departments</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Explore our diverse departments, each dedicated to a specific area of technology and innovation.</p>
+    <section id="departments" class="py-20 px-6 gradient-bg-purple">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-divider mb-16"></div>
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-5xl font-bold mb-4">Our <span class="gradient-text">Departments</span></h2>
+                <p class="text-xl text-gray-400">Specialized teams driving innovation</p>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="department-card group">
-                    <div class="bg-gradient-to-br from-purple-900/40 to-purple-800/20 p-8 rounded-2xl border border-purple-500/30 backdrop-blur-sm hover:border-purple-500 transition-all hover:shadow-xl hover:shadow-purple-500/20 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4">💻</div>
-                        <h3 class="text-2xl font-bold mb-3 text-purple-400">Software Development</h3>
-                        <p class="text-gray-300">Building innovative applications and solutions using cutting-edge technologies.</p>
-                    </div>
-                </div>
-
-                <div class="department-card group">
-                    <div class="bg-gradient-to-br from-pink-900/40 to-pink-800/20 p-8 rounded-2xl border border-pink-500/30 backdrop-blur-sm hover:border-pink-500 transition-all hover:shadow-xl hover:shadow-pink-500/20 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4">🎨</div>
-                        <h3 class="text-2xl font-bold mb-3 text-pink-400">UI/UX Design</h3>
-                        <p class="text-gray-300">Creating beautiful and intuitive user experiences that delight users.</p>
-                    </div>
-                </div>
-
-                <div class="department-card group">
-                    <div class="bg-gradient-to-br from-blue-900/40 to-blue-800/20 p-8 rounded-2xl border border-blue-500/30 backdrop-blur-sm hover:border-blue-500 transition-all hover:shadow-xl hover:shadow-blue-500/20 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4">🤖</div>
-                        <h3 class="text-2xl font-bold mb-3 text-blue-400">AI & Machine Learning</h3>
-                        <p class="text-gray-300">Exploring artificial intelligence and machine learning technologies.</p>
-                    </div>
-                </div>
-
-                <div class="department-card group">
-                    <div class="bg-gradient-to-br from-green-900/40 to-green-800/20 p-8 rounded-2xl border border-green-500/30 backdrop-blur-sm hover:border-green-500 transition-all hover:shadow-xl hover:shadow-green-500/20 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4">🔒</div>
-                        <h3 class="text-2xl font-bold mb-3 text-green-400">Cybersecurity</h3>
-                        <p class="text-gray-300">Protecting digital assets and ensuring secure systems and networks.</p>
-                    </div>
-                </div>
-
-                <div class="department-card group">
-                    <div class="bg-gradient-to-br from-yellow-900/40 to-yellow-800/20 p-8 rounded-2xl border border-yellow-500/30 backdrop-blur-sm hover:border-yellow-500 transition-all hover:shadow-xl hover:shadow-yellow-500/20 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4">📱</div>
-                        <h3 class="text-2xl font-bold mb-3 text-yellow-400">Mobile Development</h3>
-                        <p class="text-gray-300">Crafting powerful mobile applications for iOS and Android platforms.</p>
-                    </div>
-                </div>
-
-                <div class="department-card group">
-                    <div class="bg-gradient-to-br from-red-900/40 to-red-800/20 p-8 rounded-2xl border border-red-500/30 backdrop-blur-sm hover:border-red-500 transition-all hover:shadow-xl hover:shadow-red-500/20 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4">☁️</div>
-                        <h3 class="text-2xl font-bold mb-3 text-red-400">Cloud Computing</h3>
-                        <p class="text-gray-300">Leveraging cloud technologies for scalable and efficient solutions.</p>
-                    </div>
-                </div>
-
-                <div class="department-card group">
-                    <div class="bg-gradient-to-br from-indigo-900/40 to-indigo-800/20 p-8 rounded-2xl border border-indigo-500/30 backdrop-blur-sm hover:border-indigo-500 transition-all hover:shadow-xl hover:shadow-indigo-500/20 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4">📊</div>
-                        <h3 class="text-2xl font-bold mb-3 text-indigo-400">Data Science</h3>
-                        <p class="text-gray-300">Analyzing data to extract insights and drive informed decisions.</p>
-                    </div>
-                </div>
-
-                <div class="department-card group">
-                    <div class="bg-gradient-to-br from-teal-900/40 to-teal-800/20 p-8 rounded-2xl border border-teal-500/30 backdrop-blur-sm hover:border-teal-500 transition-all hover:shadow-xl hover:shadow-teal-500/20 transform hover:-translate-y-2">
-                        <div class="text-5xl mb-4">🎯</div>
-                        <h3 class="text-2xl font-bold mb-3 text-teal-400">Digital Marketing</h3>
-                        <p class="text-gray-300">Promoting tech initiatives and building strong online presence.</p>
-                    </div>
-                </div>
+            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6" id="departmentsGrid">
+                <!-- Departments will be populated by JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- Leaders Section -->
-    <section id="leaders" class="py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Our Leaders</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Meet the visionaries leading TST towards a brighter technological future.</p>
+    <section id="leaders" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-divider mb-16"></div>
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-5xl font-bold mb-4">Our <span class="gradient-text">Leaders</span></h2>
+                <p class="text-xl text-gray-400">Visionaries guiding our community</p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8" id="leadersContainer">
-                <!-- Leaders will be dynamically inserted here -->
+            <div class="grid md:grid-cols-3 gap-8" id="leadersGrid">
+                <!-- Leaders will be populated by JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="py-24 bg-gradient-to-b from-gray-900 to-gray-950">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Our Team</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Talented individuals working together to make a difference.</p>
+    <section id="team" class="py-20 px-6 gradient-bg-purple">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-divider mb-16"></div>
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-5xl font-bold mb-4">Meet Our <span class="gradient-text">Team</span></h2>
+                <p class="text-xl text-gray-400">The passionate individuals behind TST</p>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="teamContainer">
-                <!-- Team members will be dynamically inserted here -->
+            <div class="grid md:grid-cols-4 gap-6" id="teamGrid">
+                <!-- Team members will be populated by JavaScript -->
             </div>
         </div>
     </section>
 
     <!-- Events Section -->
-    <section id="events" class="py-24">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Upcoming Events</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Join us at our upcoming tech events and workshops.</p>
+    <section id="events" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-divider mb-16"></div>
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-5xl font-bold mb-4">Upcoming <span class="gradient-text">Events</span></h2>
+                <p class="text-xl text-gray-400">Join us at our next event</p>
             </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="eventsGrid">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="eventsContainer">
-                <!-- Events will be dynamically inserted here -->
+    <!-- Join Us Section -->
+    <section id="join" class="py-20 px-6 hero-gradient">
+        <div class="max-w-4xl mx-auto text-center scroll-reveal">
+            <div class="section-divider mb-16"></div>
+            <h2 class="text-5xl font-bold mb-6">Join <span class="gradient-text">TST</span> Today</h2>
+            <p class="text-xl text-gray-300 mb-12">
+                Be part of the future of technology in the Delta region. Connect with like-minded individuals, learn new
+                skills, and make an impact.
+            </p>
+            <div class="team-card p-8 rounded-2xl">
+                <h3 class="text-2xl font-bold mb-6">Why Join Us?</h3>
+                <div class="grid md:grid-cols-2 gap-6 text-left mb-8">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green text-2xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold mb-1">Networking Opportunities</h4>
+                            <p class="text-gray-400 text-sm">Connect with industry professionals and peers</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green text-2xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold mb-1">Skill Development</h4>
+                            <p class="text-gray-400 text-sm">Learn cutting-edge technologies and tools</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green text-2xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold mb-1">Exclusive Events</h4>
+                            <p class="text-gray-400 text-sm">Access to workshops, hackathons, and meetups</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-check-circle text-green text-2xl mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold mb-1">Career Growth</h4>
+                            <p class="text-gray-400 text-sm">Build your portfolio and gain real experience</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-primary px-10 py-4 rounded-full font-semibold text-lg" onclick="openJoinForm()">
+                    Apply Now
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-gradient-to-b from-gray-950 to-gray-900">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Get In Touch</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-                <p class="text-gray-400 mt-6">Have questions? We'd love to hear from you.</p>
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-divider mb-16"></div>
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-5xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="text-xl text-gray-400">We'd love to hear from you</p>
             </div>
-
-            <div class="bg-gradient-to-br from-purple-900/20 to-pink-900/20 p-8 rounded-2xl border border-purple-500/30 backdrop-blur-sm">
-                <form id="contactForm" class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-gray-300 mb-2 font-semibold">Name</label>
-                            <input type="text" class="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="Your name">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="scroll-reveal">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-purple-light bg-opacity-20 flex items-center justify-center">
+                                <i class="fas fa-envelope text-purple-light text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Email</div>
+                                <div class="font-semibold">contact@tst-tech.com</div>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-gray-300 mb-2 font-semibold">Email</label>
-                            <input type="email" class="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="your@email.com">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-cyan bg-opacity-20 flex items-center justify-center">
+                                <i class="fas fa-phone text-cyan text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Phone</div>
+                                <div class="font-semibold">+20 123 456 7890</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-green bg-opacity-20 flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-green text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-gray-400">Location</div>
+                                <div class="font-semibold">Delta Region, Egypt</div>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="block text-gray-300 mb-2 font-semibold">Subject</label>
-                        <input type="text" class="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="What's this about?">
+                    <div class="mt-8">
+                        <h4 class="text-xl font-bold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4" id="socialLinks">
+                            <!-- Social links will be populated by JavaScript -->
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-gray-300 mb-2 font-semibold">Message</label>
-                        <textarea rows="5" class="w-full bg-gray-900/50 border border-purple-500/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors resize-none" placeholder="Your message..."></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl hover:shadow-purple-500/50 transition-all transform hover:scale-105">
-                        Send Message
-                    </button>
-                </form>
-
-                <div class="mt-12 grid md:grid-cols-3 gap-6 text-center">
-                    <div class="p-4">
-                        <div class="text-3xl mb-2">📧</div>
-                        <div class="text-gray-400 text-sm mb-1">Email</div>
-                        <div class="text-purple-400 font-semibold">info@tst-tech.com</div>
-                    </div>
-                    <div class="p-4">
-                        <div class="text-3xl mb-2">📱</div>
-                        <div class="text-gray-400 text-sm mb-1">Phone</div>
-                        <div class="text-purple-400 font-semibold">+20 123 456 7890</div>
-                    </div>
-                    <div class="p-4">
-                        <div class="text-3xl mb-2">📍</div>
-                        <div class="text-gray-400 text-sm mb-1">Location</div>
-                        <div class="text-purple-400 font-semibold">Delta Region, Egypt</div>
-                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <form class="team-card p-8 rounded-2xl" onsubmit="handleContactForm(event)">
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold mb-2">Name</label>
+                            <input type="text" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-5 border border-gray-700 focus:border-purple-light focus:outline-none transition-colors">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold mb-2">Email</label>
+                            <input type="email" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-5 border border-gray-700 focus:border-purple-light focus:outline-none transition-colors">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold mb-2">Subject</label>
+                            <input type="text" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-5 border border-gray-700 focus:border-purple-light focus:outline-none transition-colors">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold mb-2">Message</label>
+                            <textarea rows="4" required
+                                class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-5 border border-gray-700 focus:border-purple-light focus:outline-none transition-colors"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full px-6 py-3 rounded-lg font-semibold">
+                            Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-950 border-t border-purple-500/20 py-12">
-        <div class="max-w-7xl mx-auto px-6">
+    <footer class="py-12 px-6 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center font-bold text-xl">
-                            T
-                        </div>
-                        <span class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">TST</span>
+                        <img src="logo.png" alt="TST Logo" class="h-10 w-10">
+                        <span class="text-xl font-bold gradient-text">TST</span>
                     </div>
-                    <p class="text-gray-400 text-sm">Shaping the future of technology, one event at a time.</p>
+                    <p class="text-gray-400 text-sm">
+                        Shaping the future of technology, one event at a time.
+                    </p>
                 </div>
-                
                 <div>
-                    <h4 class="font-bold mb-4 text-purple-400">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#about" class="hover:text-purple-400 transition-colors">About Us</a></li>
-                        <li><a href="#departments" class="hover:text-purple-400 transition-colors">Departments</a></li>
-                        <li><a href="#team" class="hover:text-purple-400 transition-colors">Our Team</a></li>
-                        <li><a href="#events" class="hover:text-purple-400 transition-colors">Events</a></li>
-                    </ul>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="#about" class="block text-gray-400 hover:text-purple-light transition-colors">About
+                            Us</a>
+                        <a href="#departments"
+                            class="block text-gray-400 hover:text-purple-light transition-colors">Departments</a>
+                        <a href="#team" class="block text-gray-400 hover:text-purple-light transition-colors">Team</a>
+                        <a href="#events"
+                            class="block text-gray-400 hover:text-purple-light transition-colors">Events</a>
+                    </div>
                 </div>
-                
                 <div>
-                    <h4 class="font-bold mb-4 text-purple-400">Resources</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-purple-400 transition-colors">Blog</a></li>
-                        <li><a href="#" class="hover:text-purple-400 transition-colors">Workshops</a></li>
-                        <li><a href="#" class="hover:text-purple-400 transition-colors">Community</a></li>
-                        <li><a href="#" class="hover:text-purple-400 transition-colors">FAQ</a></li>
-                    </ul>
+                    <h4 class="font-bold mb-4">Community</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="#join" class="block text-gray-400 hover:text-purple-light transition-colors">Join
+                            Us</a>
+                        <a href="#" class="block text-gray-400 hover:text-purple-light transition-colors">Blog</a>
+                        <a href="#" class="block text-gray-400 hover:text-purple-light transition-colors">Resources</a>
+                        <a href="#contact"
+                            class="block text-gray-400 hover:text-purple-light transition-colors">Contact</a>
+                    </div>
                 </div>
-                
                 <div>
-                    <h4 class="font-bold mb-4 text-purple-400">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://facebook.com/tst" class="w-10 h-10 bg-purple-900/30 border border-purple-500/30 rounded-lg flex items-center justify-center hover:bg-purple-500/20 hover:border-purple-500 transition-all transform hover:scale-110">
-                            <span class="text-xl">f</span>
-                        </a>
-                        <a href="https://twitter.com/tst" class="w-10 h-10 bg-purple-900/30 border border-purple-500/30 rounded-lg flex items-center justify-center hover:bg-purple-500/20 hover:border-purple-500 transition-all transform hover:scale-110">
-                            <span class="text-xl">𝕏</span>
-                        </a>
-                        <a href="https://instagram.com/tst" class="w-10 h-10 bg-purple-900/30 border border-purple-500/30 rounded-lg flex items-center justify-center hover:bg-purple-500/20 hover:border-purple-500 transition-all transform hover:scale-110">
-                            <span class="text-xl">📷</span>
-                        </a>
-                        <a href="https://linkedin.com/company/tst" class="w-10 h-10 bg-purple-900/30 border border-purple-500/30 rounded-lg flex items-center justify-center hover:bg-purple-500/20 hover:border-purple-500 transition-all transform hover:scale-110">
-                            <span class="text-xl">in</span>
-                        </a>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 text-sm mb-4">Stay updated with our latest events and news</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email"
+                            class="flex-1 px-4 py-2 rounded-l-lg bg-white bg-opacity-5 border border-gray-700 focus:outline-none text-sm">
+                        <button class="btn-primary px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-            
-            <div class="border-t border-purple-500/20 pt-8 text-center text-gray-400 text-sm">
-                <p>&copy; 2024 TST - Technology Society Team. All rights reserved.</p>
+            <div class="section-divider mb-8"></div>
+            <div class="text-center text-gray-400 text-sm">
+                <p>&copy; 2025 TST - Technology Society Team. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
